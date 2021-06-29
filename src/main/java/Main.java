@@ -1,10 +1,9 @@
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityToggleGlideEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -52,15 +51,17 @@ public class Main extends JavaPlugin implements Listener, Runnable {
         }
     }
 
-    @Override
-    public boolean onCommand(final CommandSender sender, final Command command, final String label, final String[] args) {
-        if (command.getName().equals("togglefly")) {
+    @EventHandler
+    public void onPlayerSay(AsyncPlayerChatEvent event) {
+        if (event.getMessage().equals("toggle")) {
             enabled = !enabled;
             if (enabled) {
                 startGlide();
+                Bukkit.getServer().broadcastMessage("You are now flying");
             }
-            return true;
+            else {
+                Bukkit.getServer().broadcastMessage("You are no longer flying");
+            }
         }
-        return false;
     }
 }
