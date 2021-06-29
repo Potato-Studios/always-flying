@@ -1,0 +1,9 @@
+main: Main
+name: always-flying
+version: 1.0
+author: JTpotato
+description: flying
+commands:
+  togglefly:
+    description: nyoom
+    usage: /togglefly
