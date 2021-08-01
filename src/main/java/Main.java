@@ -46,7 +46,6 @@ public class Main extends JavaPlugin implements Listener, Runnable {
         if (enabled) {
             for (final Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, 100, 1));
-                onlinePlayer.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 0));
             }
         }
     }
